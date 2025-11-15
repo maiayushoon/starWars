@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  animation: shimmer 1.6s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.modal-enter {
+  animation: modalEnter 0.25s ease-out;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+:root {
+  --bg: #f8fafc;
+  /* gray-50 */
+  --panel: #ffffff;
+  /* white */
+  --muted: #6b7280;
+  /* gray-500 */
+  --text: #111827;
+  /* gray-900 */
+  --border: #e5e7eb;
+  /* gray-200 */
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+/* Dark variables */
+.dark {
+  --bg: #0b1220;
+  /* deep background */
+  --panel: #0f1724;
+  /* panel */
+  --muted: #9ca3af;
+  /* muted text */
+  --text: #e6edf3;
+  /* main text */
+  --border: #1f2937;
+  --shadow: 0 12px 40px rgba(2, 6, 23, 0.6);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-110%);
+  animation: shimmer 1.4s infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+.modal-enter {
+  animation: modalEnter 220ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(.992);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 260ms ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.panel-bg {
+  background-color: var(--panel);
+}
+
+.border-var {
+  border-color: var(--border);
+}
+
+:root::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+:root::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.dark::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+
+.crawl,
+.crawl * {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.crawl::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25%;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+}
+
+@media (max-width: 640px) {
+  .crawl-inner { letter-spacing: 0.02em; line-height: 1.45; }
+}
